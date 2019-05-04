@@ -1,0 +1,151 @@
+
+
+<div *ngIf="isnotAdmin()&&isLoggedIn()" class="ui grid middle aligned selection list">
+
+
+
+<div class="item row" *ngFor="let order of orders" >
+
+
+    <div class="column sixteen"  [routerLink]="order.id">
+    <div class="column nine wide" *ngIf="order.user.id == getUserId()">
+    <h2>Bestellung Nummer {{ order.id }} </h2>
+    <div class="description"> Preis Netto: {{  order.netto }} Euro </div>
+    <div class="header"> Gesamtpreis Brutto: {{ order.brutto }} Euro </div>
+
+      <div class="ui horizontal segments">
+      <div class="ui segment" *ngFor="let book of order.books">
+
+        <div *ngIf="book" class="content segment button item" class="item">
+
+          <div class="header">{{ book.pivot.title }}</div>
+          <div class="description"> {{ book?.subtitle }} </div>
+          <div class="metadata">
+      <span *ngFor="let author of book.authors; last as l">
+        {{ author.firstName }} {{ author.lastName }}<span *ngIf="!l">, </span>
+      </span>
+          </div>
+          <div class="extra">ISBN {{ book.isbn }}</div>
+
+
+          <div class="ui center aligned segment ">
+            <div class="ui ">
+              <div class="value small">
+                {{ book.pivot.price }} Euro
+              </div>
+            </div>
+          </div>
+
+          <button class="ui wide icon pink button labeled" [routerLink]="getLink(book.isbn)" routerLinkActive="active">
+            <i class="book icon"></i>
+            Zum Buch
+          </button>
+
+
+
+        </div>
+
+
+      </div>
+
+      </div>
+  </div>
+
+      <div class="column seven wide" *ngIf="order.user.id == getUserId()">
+        <div class="extra"><strong>Aktueller Status: </strong>{{ getState(order.state) }}</div>
+        <div class="extra"><strong>Bestellt von : </strong>{{ order.user.name}}</div>
+        <div class="extra"><strong>Zeit : </strong>{{ order.time}}</div>
+      </div>
+
+    </div>
+</div>
+</div>
+
+
+
+
+<div *ngIf="isAdmin()&&isLoggedIn()" class="ui grid middle aligned selection list">
+
+    <div class="item row" *ngFor="let order of orders" >
+
+        <div class="column sixteen"  [routerLink]="order.id">
+
+        <div class="column nine wide">
+          <h2>Bestellung Nummer {{ order.id }} </h2>
+          <div class="description"> Preis Netto: {{  order.netto }} Euro </div>
+          <div class="header"> Gesamtpreis Brutto: {{ order.brutto }} Euro </div>
+
+          <div class="ui horizontal segments">
+            <div class="ui segment" *ngFor="let book of order.books">
+
+              <div *ngIf="book" class="content segment button item" class="item">
+
+                <div class="header">{{ book.pivot.title }}</div>
+                <div class="description"> {{ book?.subtitle }} </div>
+                <div class="metadata">
+          <span *ngFor="let author of book.authors; last as l">
+            {{ author.firstName }} {{ author.lastName }}<span *ngIf="!l">, </span>
+          </span>
+                </div>
+                <div class="extra">ISBN {{ book.isbn }}</div>
+
+
+                <div class="ui center aligned segment ">
+                  <div class="ui ">
+                    <div class="value small">
+                      {{ book.pivot.price }} Euro
+                    </div>
+                  </div>
+                </div>
+
+                <button class="ui wide icon pink button labeled" [routerLink]="getLink(book.isbn)" routerLinkActive="active">
+                  <i class="book icon"></i>
+                  Zum Buch
+                </button>
+
+
+
+              </div>
+
+
+        </div>
+
+      </div>
+    </div>
+            <div class="column two wide">
+              <div class="extra"><strong>Aktueller Status: </strong>{{ getState(order.state) }}</div>
+              <div class="extra"><strong>Bestellt von : </strong>{{ order.user.name}}</div>
+              <div class="extra"><strong>Zeit : </strong>{{ order.time}}</div>
+            </div>
+
+            <div class="column five wide">
+              Satus ändern zu:
+              <select class="ui dropdown" (change)="changeState($event.target.value)">
+                <option [ngValue]="offen">Offen</option>
+                <option [ngValue]="bezahlt">Bezahlt</option>
+                <option [ngValue]="versendet">Versendet</option>
+                <option [ngValue]="storniert">Storniert</option>
+              </select>
+              <button class="ui wide icon purple button labeled" (click)="saveState(order)">
+                <i class="hand point right outline icon"></i>
+                Speichern
+              </button>
+            </div>
+
+
+  </div>
+    </div>
+
+</div>
+
+
+<div *ngIf="isLoggedIn()==false">
+    <br>Deine Bestellungen siehst du erst wenn du eingeloggt bist: <br>
+    <button class="ui wide icon yellow button labeled" [routerLink]="['/login']">
+        <i class="hand point right outline icon"></i>
+        ZUM LOGIN
+    </button>
+</div>
+
+
+

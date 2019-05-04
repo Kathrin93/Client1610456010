@@ -1,0 +1,77 @@
+
+<div class="ui middle aligned selection divided list">
+
+
+  <div  class="item ui grid"   *ngFor="let book of booksincart" >
+
+
+    <div class="three column row">
+
+      <div class="column">
+            <a class="bs-book-list-item"
+               [book]="book" [routerLink]="getLink(book.isbn)">
+            </a>
+      </div>
+
+
+      <div class="column">
+        <div class="row">
+          <div class="column">
+            <p>
+            Menge:
+              <button class="ui icon button" (click)="decreaseAmount(book?.isbn)">
+                 <i class="arrow circle down icon"></i>
+              </button>
+
+            {{getAmountofBook(book?.isbn)}}
+              <button class="ui icon button" (click)="increaseAmount(book?.isbn)">
+                  <i class="arrow circle up icon"></i>
+                  </button>
+            </p>
+            <div class="header"> Gesamtpreis: {{book?.price * getAmountofBook(book?.isbn) }}</div>
+        </div>
+        </div>
+      </div>
+
+
+
+      <div class="column">
+    <button class="ui wide red button labeled icon right floated" (click)="deleteBookfromShoppingcard(book?.isbn)">
+      <i class="delete icon"></i>
+      Buch entfernen
+    </button>
+      </div>
+
+  </div>
+
+
+</div>
+
+  <div class="ui two column left grid">
+    <div class="row">
+      <div class="column">Gesamt: {{getNettoPrice()}} Euro </div>
+    </div>
+    <div class="row">
+      <div class="column">Gesamt mit {{steuersatz*100}} % MwSt: {{getBruttoPrice()}} Euro</div>
+    </div>
+  </div>
+
+
+  <button *ngIf="isLoggedIn()" class="ui wide icon green button labeled" [routerLink]="['/cartorder']">
+    <i class="hand point right outline icon"></i>
+   Bestellung
+  </button>
+
+  <div *ngIf="isLoggedIn()==false">
+    <br> Um die Bücher bestellen zu können musst du dich vorher einloggen: <br>
+    <button class="ui wide icon yellow button labeled" [routerLink]="['/login']">
+      <i class="hand point right outline icon"></i>
+      ZUM LOGIN
+    </button>
+  </div>
+
+
+
+</div>
+
+

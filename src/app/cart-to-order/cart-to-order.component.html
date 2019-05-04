@@ -1,0 +1,54 @@
+<div class="ui middle selection divided list">
+
+    <h2>Bestellung Übersicht</h2>
+
+    <div class="item ui grid" *ngFor="let book of booksincart">
+
+        <div class="two column row">
+
+            <div class="column">
+            <a class="bs-book-list-item"
+               [book]="book" [routerLink]="book?.isbn">
+            </a>
+            </div>
+
+
+            <div class="column">
+                <p>
+                    <p>Menge:  {{getAmountofBook(book?.isbn)}} </p>
+                    <p class="header">Gesamtpreis: {{book?.price}} Euro </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="ui horizontal segments">
+        <div class="ui segment" >
+
+            <a class="ui red ribbon label">Deine Kosten</a>
+                <div ><br> Gesamt: {{getNettoPrice()}} Euro </div>
+
+            <div ><strong>Gesamt mit {{steuersatz*100}} % MwSt: {{getBruttoPrice()}} Euro</strong><br> </div>
+
+        </div>
+
+        <div class="ui segment" >
+
+            <a class="ui red ribbon label">Deine Lieferadresse</a>
+            <div class=""><br> {{getAddress()}}<br>  </div>
+
+
+
+        </div>
+    </div>
+
+    <button class="ui wide icon green button labeled" (click)="createOrder()">
+        <i class="hand point right outline icon"></i>
+        Verbindlich bestellen
+    </button>
+
+
+</div>
+
+

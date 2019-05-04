@@ -1,0 +1,29 @@
+<div class="ui middle aligned selection divided list">
+
+
+  <h2> Willkommen in meinem Bookstore </h2>
+  <p>Viel Spaß beim Shoppen!!</p>
+
+  <div class="item" *ngFor="let book of books" >
+    <a class="bs-book-list-item"
+       [book]="book" [routerLink]="book.isbn">
+    </a>
+
+
+    <button class="ui wide green button labeled icon aligned right floated" (click)="addBooktoShoppingCard(book)">
+      <i class="shop icon"></i>
+      Buch kaufen
+    </button>
+
+  </div>
+
+
+
+  <div *ngIf="!books" class="ui active dimmer">
+    <div class="ui large text loader">Daten werden geladen ... </div>
+  </div>
+
+  <p *ngIf="books && !books.length">
+    Es sind keine Bücher vorhanden!
+  </p>
+</div>

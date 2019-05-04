@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "39fd6796-d983-4b6d-a8ca-22165446b3c1",
+		"name": "KWM Bookstore Test SS2019",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "REST List all Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://bookstore19.s1610456010.student.kwmhgb.at/api/books",
+					"protocol": "http",
+					"host": [
+						"bookstore19",
+						"s1610456010",
+						"student",
+						"kwmhgb",
+						"at"
+					],
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST get book by ISBN",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://bookstore19.s1610456010.student.kwmhgb.at/api/book/66666",
+					"protocol": "http",
+					"host": [
+						"bookstore19",
+						"s1610456010",
+						"student",
+						"kwmhgb",
+						"at"
+					],
+					"path": [
+						"api",
+						"book",
+						"66666"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST check isbn",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://bookstore19.s1610456010.student.kwmhgb.at/api/book/checkisbn/66666",
+					"protocol": "http",
+					"host": [
+						"bookstore19",
+						"s1610456010",
+						"student",
+						"kwmhgb",
+						"at"
+					],
+					"path": [
+						"api",
+						"book",
+						"checkisbn",
+						"66666"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://bookstore19.s1610456010.student.kwmhgb.at/api/books/search/herr",
+					"protocol": "http",
+					"host": [
+						"bookstore19",
+						"s1610456010",
+						"student",
+						"kwmhgb",
+						"at"
+					],
+					"path": [
+						"api",
+						"books",
+						"search",
+						"herr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST buch speicher",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"isbn\": \"77777777\",\n    \"title\": \"Herr der Ringe Teil 3\",\n    \"subtitle\": \"Die Rückkehr des Königs\",\n    \"published\": \"2019-03-11 09:01:39\",\n    \"rating\": 10,\n    \"description\": \"Erster Teil ... \",\n    \"user_id\": 1,\n    \"authors\":[],\n    \"images\": []\n}"
+				},
+				"url": {
+					"raw": "http://bookstore19.s1610456010.student.kwmhgb.at/Spaghetti Bolognese oder mit Parmesansauce?Content-Type",
+					"protocol": "http",
+					"host": [
+						"bookstore19",
+						"s1610456010",
+						"student",
+						"kwmhgb",
+						"at"
+					],
+					"path": [
+						"Spaghetti Bolognese oder mit Parmesansauce"
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST buch speicher mit Verbindungen",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n  \"isbn\":\"0000000044444444444\",\r\n  \"title\":\"Erstes neues Buch\", \r\n  \"user_id\": 1, \r\n  \"rating\" : 3,\r\n  \"authors\":[{\r\n    \"id\":3,\r\n    \"firstName\":\"Karl\",\r\n    \"lastName\":\"Huber\"\r\n   },\r\n   {\r\n    \"id\":4,\r\n    \"firstName\":\"Johannes\",\r\n    \"lastName\":\"Schönböck\"\r\n   }],\r\n  \"published\":\"2018-01-01T23:00:00.000Z\",\r\n  \"subtitle\":\"Wir lernen dann Angular\",\r\n  \"images\":[{\r\n\"url\":\"https://images-na.ssl-images-amazon.com/images/I/51H--PJcVNL._SX342_BO1,204,203,200_.jpg\",\r\n    \"title\":\"Angular 4\"},\r\n    {\r\n\"url\":\"https://images-na.ssl-images-amazon.com/images/I/514Q%2BCZgjjL._SY400_.jpg\",\r\n    \"title\":\"Angular\"\r\n    }],\r\n  \"description\":\"Lorem ipsum dolor sit amet\"}"
+				},
+				"url": {
+					"raw": "http://bookstore19.s1610456010.student.kwmhgb.at/api/book",
+					"protocol": "http",
+					"host": [
+						"bookstore19",
+						"s1610456010",
+						"student",
+						"kwmhgb",
+						"at"
+					],
+					"path": [
+						"api",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST Buch update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n  \"isbn\":\"777999999\",\r\n  \"title\":\"Erstes neues Buch - Update 2\", \r\n  \"user_id\": 1, \r\n  \"rating\" : 3,\r\n  \"authors\":[{\r\n    \"id\":3,\r\n    \"firstName\":\"Karl\",\r\n    \"lastName\":\"Huber\"\r\n   },\r\n   {\r\n    \"id\":4,\r\n    \"firstName\":\"Johannes\",\r\n    \"lastName\":\"Schönböck\"\r\n   }],\r\n  \"published\":\"2018-01-01T23:00:00.000Z\",\r\n  \"subtitle\":\"Wir lernen dann Angular - Update 1 \",\r\n  \"images\":[{\r\n\"url\":\"https://images-na.ssl-images-amazon.com/images/I/51H--PJcVNL._SX342_BO1,204,203,200_.jpg\",\r\n    \"title\":\"Angular 4\"},\r\n    {\r\n\"url\":\"https://images-na.ssl-images-amazon.com/images/I/51H--PJcVNL._SX342_BO1,204,203,200_.jpg\",\r\n    \"title\":\"Angular 56\"},\r\n    {\r\n\"url\":\"https://images-na.ssl-images-amazon.com/images/I/514Q%2BCZgjjL._SY400_.jpg\",\r\n    \"title\":\"Angular\"\r\n    }],\r\n  \"description\":\"Lorem ipsum dolor sit amet\"}"
+				},
+				"url": {
+					"raw": "http://bookstore19.s1610456010.student.kwmhgb.at/api/book/777999999",
+					"protocol": "http",
+					"host": [
+						"bookstore19",
+						"s1610456010",
+						"student",
+						"kwmhgb",
+						"at"
+					],
+					"path": [
+						"api",
+						"book",
+						"777999999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST BUCH LÖSCHEN",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://bookstore19.s1610456010.student.kwmhgb.at/api/book/12345",
+					"protocol": "http",
+					"host": [
+						"bookstore19",
+						"s1610456010",
+						"student",
+						"kwmhgb",
+						"at"
+					],
+					"path": [
+						"api",
+						"book",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

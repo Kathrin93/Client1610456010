@@ -1,0 +1,9 @@
+<div class="ui {{isAdmin()&&isLoggedIn()?'five':'four'}} item tabs menu">
+  <a routerLink="books" routerLinkActive="active" class="item">Bücher</a>
+  <a *ngIf="isAdmin()&&isLoggedIn()" routerLink="admin" routerLinkActive="active" class="item">Bücher anlegen/ändern</a>
+  <a routerLink="cart" routerLinkActive="active" class="item">Warenkorb</a>
+  <a routerLink="orders" routerLinkActive="active" class="item">Bestellungen</a>
+  <a routerLink="login" routerLinkActive="active" class="item"> {{getUserName()}} / {{getLoginLabel()}}</a>
+</div>
+
+<router-outlet></router-outlet>
